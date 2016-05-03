@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24 avr. 2014 11:38:54 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Trancheage" table="trancheage" catalog="ergosum">
+        <id name="codetranche" type="string">
+            <column name="CODETRANCHE" length="15" />
+            <generator class="assigned" />
+        </id>
+        <property name="agemin" type="java.lang.Integer">
+            <column name="AGEMIN" />
+        </property>
+        <property name="agemax" type="java.lang.Integer">
+            <column name="AGEMAX" />
+        </property>
+        <set name="jouets" table="jouet" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CODETRANCHE" length="15" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Jouet" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="ergosum" match-name="catalogue"/>
+  <table-filter match-catalog="ergosum" match-name="categorie"/>
+  <table-filter match-catalog="ergosum" match-name="comporte"/>
+  <table-filter match-catalog="ergosum" match-name="jouet"/>
+  <table-filter match-catalog="ergosum" match-name="trancheage"/>
+</hibernate-reverse-engineering>

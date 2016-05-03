@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24 avr. 2014 11:38:54 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="hibernate.metier.Jouet" table="jouet" catalog="ergosum">
+        <id name="numero" type="string">
+            <column name="NUMERO" length="15" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categorie" class="hibernate.metier.Categorie" fetch="select">
+            <column name="CODECATEG" length="15" not-null="true" />
+        </many-to-one>
+        <many-to-one name="trancheage" class="hibernate.metier.Trancheage" fetch="select">
+            <column name="CODETRANCHE" length="15" not-null="true" />
+        </many-to-one>
+        <property name="libelle" type="string">
+            <column name="LIBELLE" length="20" />
+        </property>
+        <set name="comportes" table="comporte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMERO" length="15" not-null="true" />
+            </key>
+            <one-to-many class="hibernate.metier.Comporte" />
+        </set>
+    </class>
+</hibernate-mapping>
