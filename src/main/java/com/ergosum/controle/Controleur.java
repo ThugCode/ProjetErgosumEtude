@@ -59,6 +59,9 @@ public ModelAndView afficherLesJouets(HttpServletRequest request,
 			GestionErgosum unService = new GestionErgosum();
 			if (unService != null)
 				request.setAttribute("mesJouets", unService.listerTousLesJouets());
+				
+			request.setAttribute("chargement", true);
+			request.setAttribute("js", "listeJouet");
 
 		} catch (ServiceHibernateException e)
 		{
@@ -94,6 +97,8 @@ public ModelAndView ajoutJouet(HttpServletRequest request,
 				request.setAttribute("categories", unService.listerToutesLesCategories());
 				request.setAttribute("tranches", unService.listerToutesLesTranches());
 				request.setAttribute("catalogues", unService.listerTousLesCatalogues());
+				request.setAttribute("js", "ajouterJouet");
+				request.setAttribute("chargement", true);
 				
 		         destinationPage = "/AjouterJouet";
 			}
@@ -368,6 +373,7 @@ public ModelAndView sauverJouet(HttpServletRequest request,
 				HashMap<Categorie, Integer> hashCatInt = unService.rechercherDictionnaire(request.getParameter("annee"));
 				request.setAttribute("dictionnaire", hashCatInt);
 			    request.setAttribute("anneecatalogue", annee);
+			    request.setAttribute("chargement", true);
 			    destinationPage = "/AfficherDictionnaire";
 			}
 		} 
