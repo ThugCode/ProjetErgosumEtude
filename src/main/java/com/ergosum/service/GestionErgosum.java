@@ -165,14 +165,35 @@ public class GestionErgosum {
 	 * Liste de tous les jouets
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Jouet> listerTousLesJouets() throws HibernateException,
+	public List<Jouet> listerTousLesJouets(String categorie, String trancheAge) throws HibernateException,
 			ServiceHibernateException {
 		try {
 
+			boolean first = true;
 			session = ServiceHibernate.currentSession();
 			// On passe une requête SQL en utilisant les noms des fichiers hbm
 
 			String marequete = "SELECT j  FROM Jouet AS j";
+			
+			if(categorie != null) {
+				if(first) {
+					marequete += " WHERE";
+					first = false;
+				}
+				
+				marequete += " j.categorie = "+categorie;
+			}
+			if(trancheAge != null) {
+				if(first) {
+					marequete += " WHERE";
+					first = false;
+				}
+				else {
+					marequete += " AND";
+				}
+				marequete += " j.trancheage = "+trancheAge;
+			}
+			
 			Query query = session.createQuery(marequete);
 			mesJouets = query.list();
 			ServiceHibernate.closeSession();
@@ -186,78 +207,6 @@ public class GestionErgosum {
 		return mesJouets;
 	}
 	
-	/**
-	 * Liste de tous les jouets par catégorie
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Jouet> listerJouetsParCategorie(String id) throws HibernateException,
-			ServiceHibernateException {
-		try {
-
-			session = ServiceHibernate.currentSession();
-			// On passe une requête SQL en utilisant les noms des fichiers hbm
-
-			String marequete = "SELECT j  FROM Jouet AS j where j.categorie = ?";		
-			Query query = session.createQuery(marequete).setString(0,id);
-			mesJouets = query.list();
-			ServiceHibernate.closeSession();
-		} catch (ServiceHibernateException ex) {
-			throw new ServiceHibernateException("Erreur de service Hibernate: "
-					+ ex.getMessage(), ex);
-		} catch (HibernateException ex) {
-			throw new MonException("Erreur  Hibernate: ", ex.getMessage());
-		}
-		return mesJouets;
-	}
-	
-	/**
-	 * Liste de tous les jouets par tranche d'age
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Jouet> listerJouetsParAge(String id) throws HibernateException,
-			ServiceHibernateException {
-		try {
-
-			session = ServiceHibernate.currentSession();
-			// On passe une requête SQL en utilisant les noms des fichiers hbm
-
-			String marequete = "SELECT j  FROM Jouet AS j where j.trancheage = ?";		
-			Query query = session.createQuery(marequete).setString(0,id);
-			mesJouets = query.list();
-			ServiceHibernate.closeSession();
-		} catch (ServiceHibernateException ex) {
-			throw new ServiceHibernateException("Erreur de service Hibernate: "
-					+ ex.getMessage(), ex);
-		} catch (HibernateException ex) {
-			throw new MonException("Erreur  Hibernate: ", ex.getMessage());
-		}
-		return mesJouets;
-	}
-	
-	/**
-	 * Liste de tous les jouets par quantité distribuée
-	 */
-	@SuppressWarnings("unchecked")
-	public List<Jouet> listerJouetsParQuantité(String id) throws HibernateException,
-			ServiceHibernateException {
-		try {
-
-			session = ServiceHibernate.currentSession();
-			// On passe une requête SQL en utilisant les noms des fichiers hbm
-
-			String marequete = "SELECT j  FROM Jouet AS j where j.trancheage = ?";		
-			Query query = session.createQuery(marequete).setString(0,id);
-			mesJouets = query.list();
-			ServiceHibernate.closeSession();
-		} catch (ServiceHibernateException ex) {
-			throw new ServiceHibernateException("Erreur de service Hibernate: "
-					+ ex.getMessage(), ex);
-		} catch (HibernateException ex) {
-			throw new MonException("Erreur  Hibernate: ", ex.getMessage());
-		}
-		return mesJouets;
-	}
-
 	/**
 	 * Liste de tous les catalogues
 	 */

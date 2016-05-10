@@ -54,14 +54,20 @@ public ModelAndView afficherLesJouets(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
 		String destinationPage = "";
+		String categorie = request.getParameter("categories") == "" ? null : request.getParameter("categories");
+		String tranche = request.getParameter("tranches") == "" ? null : request.getParameter("tranches");
 		try
 		{
 			GestionErgosum unService = new GestionErgosum();
-			if (unService != null)
-				request.setAttribute("mesJouets", unService.listerTousLesJouets());
-				
+			if (unService != null) {
+				request.setAttribute("mesJouets", unService.listerTousLesJouets(categorie,tranche));
+				request.setAttribute("categories", unService.listerToutesLesCategories());
+				request.setAttribute("tranches", unService.listerToutesLesTranches());
+			}
 			request.setAttribute("chargement", true);
 			request.setAttribute("js", "listeJouet");
+			request.setAttribute("categorieSelected", categorie);
+			request.setAttribute("trancheSelected", tranche);
 
 		} catch (ServiceHibernateException e)
 		{
@@ -250,7 +256,7 @@ public ModelAndView sauverJouet(HttpServletRequest request,
 			}
 			try
 			{
-				request.setAttribute("mesJouets", unService.listerTousLesJouets());
+				request.setAttribute("mesJouets", unService.listerTousLesJouets(null,null));
 				destinationPage = "/ListeJouets";
 			} catch (ServiceHibernateException e)
 			{
@@ -296,7 +302,7 @@ public ModelAndView sauverJouet(HttpServletRequest request,
 							unService.effacer(ids);
 						}
 					// preparation de la liste
-					request.setAttribute("mesJouets", unService.listerTousLesJouets());
+					request.setAttribute("mesJouets", unService.listerTousLesJouets(null,null));
 				 } 
 				catch (ServiceHibernateException e)
 		

@@ -9,7 +9,26 @@
 		<h4>Liste des jouets</h4>
 		<input type="hidden" name="uneErreur" value="${MesErreurs}"
 			id="id_erreur">
-	
+			
+		<form action="afficherJouets.htm">
+			<select name="categories">
+			    <option value="" selected>Choisir une categorie...</option>
+	    		<c:forEach items="${categories}" var="categorie">
+            		<option ${categorie == categorieSelected  ? 'selected' : ''} value="${categorie.codecateg}">${categorie.libcateg}</option>
+	    		</c:forEach>
+			</select>
+			
+			<select name="tranches">
+			    <option value="" selected>Choisir une tranche d'age...</option>
+	    		<c:forEach items="${tranches}" var="tranche">
+            		<option ${tranche == trancheSelected  ? 'selected' : ''} value="${tranche.codetranche}">${tranche.agemin} ans - ${tranche.agemax} ans</option>
+	    		</c:forEach>
+			</select>
+			
+			<input type="submit" value="Trier" />
+			<a type="button" href="afficherJouets.htm" >Reset</a> 
+		</form>
+		
 		<form name="deleteForm" method="post" action="effacerJouet.htm">
 			<table>
 				<tr>
