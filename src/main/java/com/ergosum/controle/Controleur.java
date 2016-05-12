@@ -66,8 +66,9 @@ public ModelAndView afficherLesJouets(HttpServletRequest request,
 			}
 			request.setAttribute("chargement", true);
 			request.setAttribute("js", "listeJouet");
-			request.setAttribute("categorieSelected", categorie);
-			request.setAttribute("trancheSelected", tranche);
+			
+			request.setAttribute("categorieSelected", unService.rechercherCategorie(categorie));
+			request.setAttribute("trancheSelected", unService.rechercherTrancheage(tranche));
 
 		} catch (ServiceHibernateException e)
 		{
