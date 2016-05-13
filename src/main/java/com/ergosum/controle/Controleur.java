@@ -34,7 +34,7 @@ public class Controleur extends MultiActionController {
 	private static final Logger logger = LoggerFactory.getLogger(Controleur.class); 
 	private Jouet unJouet;
 	
-	@RequestMapping(value = "ProjetErgosum", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -99,7 +99,7 @@ public ModelAndView ajoutJouet(HttpServletRequest request,
 			
 			if (unService != null)
 			{
-				// on passe les numéros de client et de vendeur
+				// on passe les numÃ©ros de client et de vendeur
 				request.setAttribute("jouet", new Jouet());
 				request.setAttribute("categories", unService.listerToutesLesCategories());
 				request.setAttribute("tranches", unService.listerToutesLesTranches());
@@ -123,7 +123,7 @@ public ModelAndView ajoutJouet(HttpServletRequest request,
 	
 	
 	/**
-	 * Sélection d'une année par catégorie
+	 * SÃ©lection d'une annÃ©e par catÃ©gorie
 	 */
 	@RequestMapping(value = "selectionnerAnnee.htm")
 
@@ -136,7 +136,7 @@ public ModelAndView selectionAnnee(HttpServletRequest request,
 	}
 	
 	/**
-	 * Sélection d'une année Ctagoriet
+	 * SÃ©lection d'une annÃ©e Ctagoriet
 	 */
 	@RequestMapping(value = "listerCatalogue.htm")
 
@@ -216,15 +216,15 @@ public ModelAndView sauverJouet(HttpServletRequest request,
 			if (unService != null)
 			{
 		
-    	// fabrication du jouet à partir des paramètres de la requête
-		// Si le jouet n'est pas à créer, il faut le récupérer de la session
+    	// fabrication du jouet Ã  partir des paramÃ¨tres de la requÃªte
+		// Si le jouet n'est pas Ã  crÃ©er, il faut le rÃ©cupÃ©rer de la session
 		// courante
 		// Ensuite on peut modifier ses champs
 		
 			if (request.getParameter("type").equals("ajout"))
 				unJouet = new Jouet();
 			else
-			{ // on récupère le jouet courant
+			{ // on rÃ©cupÃ¨re le jouet courant
 				
 				unJouet = unService.rechercherJouet(id);
 			}
@@ -246,7 +246,6 @@ public ModelAndView sauverJouet(HttpServletRequest request,
 			{
 				
 				Catalogue leCatalogue = unService.rechercherCatalogue(request.getParameter("codecatalogue"));
-				System.out.println("Je suis à la quantité ");;
 				int quantiteDistribution = Integer.parseInt(request.getParameter("quantiteDistribution"));
 				if (quantiteDistribution>0)
 				{

@@ -32,13 +32,13 @@
 <body>
 	<div id="top-gap"></div>
 	<div class="wrapper">
-		<a href="Accueil.htm"> <img id="logo"
+		<a href="<%=request.getContextPath()%>/"> <img id="logo"
 			src="<c:url value='/resources/img/logo.png' />" alt="Ergosum " />
 		</a>
 
 		<div id="nav-bar-holder">
 			<ul id="nav" class="sf-menu">
-				<li class="current-menu-item"><a href="Accueil.htm">Accueil</a></li>
+				<li class="current-menu-item"><a href="<%=request.getContextPath()%>/">Accueil</a></li>
 				<li><a href="afficherJouets.htm">Jouets</a>
 					<ul>
 						<li><a href="afficherJouets.htm">Lister</a></li>
@@ -63,7 +63,7 @@
 				<div class="sideblock">
 					<h6 class="side-title">Pages</h6>
 					<ul class="cat-list">
-						<li><a href="Accueil.htm" class="sidebar-inside">Accueil</a></li>
+						<li><a href="<%=request.getContextPath()%>/" class="sidebar-inside">Accueil</a></li>
 						<li><a href="afficherJouets.htm">Jouets</a>
 							<ul>
 								<li><a href="afficherJouets.htm">Lister</a></li>
