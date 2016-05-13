@@ -39,13 +39,13 @@
 		<div id="nav-bar-holder">
 			<ul id="nav" class="sf-menu">
 				<li class="current-menu-item"><a href="<%=request.getContextPath()%>/">Accueil</a></li>
-				<li><a href="afficherJouets.htm">Jouets</a>
+				<li><a href="<%=request.getContextPath()%>/afficherJouets.htm">Jouets</a>
 					<ul>
-						<li><a href="afficherJouets.htm">Lister</a></li>
-						<li><a href="ajouterJouet.htm">Ajouter</a></li>
+						<li><a href="<%=request.getContextPath()%>/afficherJouets.htm">Lister</a></li>
+						<li><a href="<%=request.getContextPath()%>/ajouterJouet.htm">Ajouter</a></li>
 					</ul></li>
-				<li><a href="selectionnerAnnee.htm">Catalogues</a></li>
-				<li><a href="listerCatalogue.htm">Dictionnaires</a></li>
+				<li><a href="<%=request.getContextPath()%>/selectionnerAnnee.htm">Catalogues</a></li>
+				<li><a href="<%=request.getContextPath()%>/listerCatalogue.htm">Dictionnaires</a></li>
 			</ul>
 		</div>
 
@@ -64,13 +64,13 @@
 					<h6 class="side-title">Pages</h6>
 					<ul class="cat-list">
 						<li><a href="<%=request.getContextPath()%>/" class="sidebar-inside">Accueil</a></li>
-						<li><a href="afficherJouets.htm">Jouets</a>
+						<li><a href="<%=request.getContextPath()%>/afficherJouets.htm">Jouets</a>
 							<ul>
-								<li><a href="afficherJouets.htm">Lister</a></li>
-								<li><a href="ajouterJouet.htm">Ajouter</a></li>
+								<li><a href="<%=request.getContextPath()%>/afficherJouets.htm">Lister</a></li>
+								<li><a href="<%=request.getContextPath()%>/ajouterJouet.htm">Ajouter</a></li>
 							</ul></li>
-						<li><a href="selectionnerAnnee.htm">Catalogues</a></li>
-						<li><a href="listerCatalogue.htm">Dictionnaires</a></li>
+						<li><a href="<%=request.getContextPath()%>/selectionnerAnnee.htm">Catalogues</a></li>
+						<li><a href="<%=request.getContextPath()%>/listerCatalogue.htm">Dictionnaires</a></li>
 					</ul>
 				</div>
 			</div>
@@ -89,10 +89,10 @@
 			</div>
 			<div id="bottom-right">
 				<ul id="footer-nav">
-					<li><a href="Accueil.htm">Accueil</a></li>
-					<li><a href="afficherJouets.htm">Jouets</a></li>
-					<li><a href="selectionnerAnnee.htm">Catalogues</a></li>
-					<li><a href="listerCatalogue.htm">Dictionnaires</a></li>
+					<li><a href="<%=request.getContextPath()%>/">Accueil</a></li>
+					<li><a href="<%=request.getContextPath()%>/afficherJouets.htm">Jouets</a></li>
+					<li><a href="<%=request.getContextPath()%>/selectionnerAnnee.htm">Catalogues</a></li>
+					<li><a href="<%=request.getContextPath()%>/listerCatalogue.htm">Dictionnaires</a></li>
 				</ul>
 			</div>
 		</div>
