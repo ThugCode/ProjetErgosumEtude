@@ -34,15 +34,15 @@ public class Controleur extends MultiActionController {
 	private static final Logger logger = LoggerFactory.getLogger(Controleur.class); 
 	private Jouet unJouet;
 	
-	@RequestMapping(value = "Accueil.htm", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	@RequestMapping(value = "ProjetErgosum", method = RequestMethod.GET)
+	public ModelAndView home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate );
-		return "/Accueil";
+		return new ModelAndView("Accueil");
 	}
 	
 	/**
